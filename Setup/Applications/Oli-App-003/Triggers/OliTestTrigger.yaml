@@ -16,4 +16,4 @@ triggerCondition:
   repositoryType: GITHUB
 workflowVariables:
 - name: OliBuildVer
-  value: 0.4.30
+  value: 0.4.29
