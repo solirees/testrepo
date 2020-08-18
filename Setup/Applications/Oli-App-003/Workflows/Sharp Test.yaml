@@ -59,4 +59,3 @@ userVariables:
   fixed: false
   mandatory: false
   name: BuildVer
-  value: 0.4.30
