@@ -10,4 +10,4 @@ triggerCondition:
   repositoryType: GITHUB
 workflowVariables:
 - name: BuildVer
-  value: 0.4.30
+  value: 0.4.20
