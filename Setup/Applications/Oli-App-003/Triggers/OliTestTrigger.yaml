@@ -8,3 +8,6 @@ triggerCondition:
   eventType:
   - push
   repositoryType: GITHUB
+workflowVariables:
+- name: OliTestVar
+  value: ${ref}
