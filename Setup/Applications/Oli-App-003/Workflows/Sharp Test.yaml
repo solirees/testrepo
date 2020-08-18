@@ -58,5 +58,5 @@ userVariables:
 - type: TEXT
   fixed: false
   mandatory: false
-  name: OliBuildVer
+  name: BuildVer
   value: 0.4.30
