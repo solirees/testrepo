@@ -1,0 +1,28 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: APPROVAL
+  name: Approval 0
+  parallel: false
+  properties:
+    userGroups:
+    - Account Administrator
+    variables: null
+    pipelineStageElementId: 8gbeQfdhRg-7dGy3aQuw5g
+    stageName: STAGE 1
+    disable: false
+    timeoutMillis: 86400000
+    pipelineStageParallelIndex: 1
+    approvalStateType: USER_GROUP
+    sweepingOutputName: ''
+    pipelineId: 0ED2Vsx9R6m6cn99DXn5EA
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+- type: ENV_STATE
+  name: Test100
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: Test100

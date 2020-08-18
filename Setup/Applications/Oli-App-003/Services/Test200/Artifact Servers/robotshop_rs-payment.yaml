@@ -1,0 +1,4 @@
+harnessApiVersion: '1.0'
+type: DOCKER
+imageName: robotshop/rs-payment
+serverName: Instana Robotshop Public
