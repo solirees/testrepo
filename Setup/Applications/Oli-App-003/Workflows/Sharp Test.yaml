@@ -26,8 +26,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Deploy
     steps:
-    - type: K8S_DEPLOYMENT_ROLLING
-      name: Rollout Deployment
     - type: APPROVAL
       name: Approval
       properties:
@@ -35,6 +33,8 @@ phases:
         timeoutMillis: 86400000
         userGroups:
         - PFIVcv84TVW6OEpQEDvmGw
+    - type: K8S_DEPLOYMENT_ROLLING
+      name: Rollout Deployment
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
