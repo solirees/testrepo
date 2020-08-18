@@ -1,5 +1,10 @@
 harnessApiVersion: '1.0'
 type: TRIGGER
+artifactSelections:
+- artifactStreamName: robotshop_rs-payment
+  regex: false
+  serviceName: rs-payments
+  type: LAST_COLLECTED
 executionName: Sharp Test
 executionType: Workflow
 triggerCondition:
