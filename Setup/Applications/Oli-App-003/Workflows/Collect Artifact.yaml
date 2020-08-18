@@ -23,7 +23,7 @@ phases:
       name: Artifact Collection
       properties:
         artifactStreamName: robotshop_rs-payment
-        buildNo: 0.4.30
+        buildNo: ${workflow.variables.BuildVer}
         entityType: SERVICE
         regex: false
         serviceName: rs-payments
