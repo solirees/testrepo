@@ -61,9 +61,4 @@ rollbackPhases:
   provisionNodes: false
   serviceName: rs-payments
   statefulSet: false
-templatized: true
-userVariables:
-- type: TEXT
-  fixed: false
-  mandatory: true
-  name: OliTestVar
+templatized: false
