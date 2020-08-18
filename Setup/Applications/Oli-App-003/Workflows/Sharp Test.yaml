@@ -53,4 +53,10 @@ rollbackPhases:
   provisionNodes: false
   serviceName: rs-payments
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: false
+  name: OliBuildVer
+  value: 0.4.30
