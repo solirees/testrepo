@@ -1,7 +1,8 @@
 harnessApiVersion: '1.0'
 type: TRIGGER
 artifactSelections:
-- artifactStreamName: robotshop_rs-payment
+- artifactFilter: 0.4.30
+  artifactStreamName: robotshop_rs-payment
   regex: false
   serviceName: rs-payments
   type: LAST_COLLECTED
@@ -14,5 +15,5 @@ triggerCondition:
   - push
   repositoryType: GITHUB
 workflowVariables:
-- name: OliTestVar
-  value: ${ref}
+- name: OliBuildVer
+  value: 0.4.30
