@@ -37,4 +37,9 @@ phases:
     stepsInParallel: false
   provisionNodes: false
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: false
+  name: BuildVer
