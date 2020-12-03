@@ -1,9 +1,0 @@
-harnessApiVersion: '1.0'
-type: TRIGGER
-continueWithDefaultValues: false
-executionName: OliTestPipeline
-executionType: Pipeline
-triggerCondition:
-- type: WEBHOOK
-workflowVariables:
-- name: BuildVer
