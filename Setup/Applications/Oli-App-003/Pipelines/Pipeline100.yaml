@@ -5,6 +5,7 @@ pipelineStages:
   name: Approval 0
   parallel: false
   properties:
+    workflowVariables: null
     approvalStateParams:
       shellScriptApprovalParams:
         scriptString: |-
@@ -22,5 +23,5 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 1
+  stageName: DEPLOY
   workflowName: Workflow100
