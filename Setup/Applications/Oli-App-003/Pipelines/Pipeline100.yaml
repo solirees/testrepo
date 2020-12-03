@@ -2,22 +2,21 @@ harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
 - type: APPROVAL
-  name: Approval 1
+  name: Approval 0
   parallel: false
   properties:
-    workflowVariables: null
     approvalStateParams:
       shellScriptApprovalParams:
         scriptString: |-
           # Following must be ACCEPTED or REJECTED
           HARNESS_APPROVAL_STATUS=REJECTED
         retryInterval: 30000
-    stageName: STAGE 2
+    stageName: PRE_CHECK
     timeoutMillis: 86400000
     approvalStateType: SHELL_SCRIPT
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 2
+  stageName: PRE_CHECK
 - type: ENV_STATE
   name: Workflow100
   parallel: false
