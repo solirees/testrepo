@@ -1,17 +1,11 @@
 harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
-- type: ENV_STATE
-  name: Workflow100
-  parallel: false
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: STAGE 1
-  workflowName: Workflow100
 - type: APPROVAL
   name: Approval 1
   parallel: false
   properties:
+    workflowVariables: null
     approvalStateParams:
       shellScriptApprovalParams:
         scriptString: |-
@@ -24,3 +18,10 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
+- type: ENV_STATE
+  name: Workflow100
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Workflow100
