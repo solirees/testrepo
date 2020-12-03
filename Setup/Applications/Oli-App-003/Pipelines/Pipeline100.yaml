@@ -8,3 +8,19 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 1
   workflowName: Workflow100
+- type: APPROVAL
+  name: Approval 1
+  parallel: false
+  properties:
+    approvalStateParams:
+      shellScriptApprovalParams:
+        scriptString: |-
+          # Following must be ACCEPTED or REJECTED
+          HARNESS_APPROVAL_STATUS=REJECTED
+        retryInterval: 30000
+    stageName: STAGE 2
+    timeoutMillis: 86400000
+    approvalStateType: SHELL_SCRIPT
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
