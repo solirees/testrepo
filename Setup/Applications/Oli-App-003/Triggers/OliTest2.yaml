@@ -5,6 +5,7 @@ artifactSelections:
   regex: false
   serviceName: rs-payments
   type: LAST_COLLECTED
+continueWithDefaultValues: false
 executionName: Sharp Test
 executionType: Workflow
 triggerCondition:
