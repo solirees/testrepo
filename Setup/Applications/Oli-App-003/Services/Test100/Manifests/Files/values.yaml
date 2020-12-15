@@ -26,4 +26,4 @@ env:
     olivar01: 12345678890
     olivar02: abcdefghijk
   secrets:
-    olisec01: ${secrets.getValue("oli-rsa-private-001")}
+    olisec01: test123
