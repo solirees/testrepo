@@ -8,8 +8,8 @@ pipelineStages:
     approvalStateParams:
       shellScriptApprovalParams:
         scriptString: |-
-          # Following must be ACCEPTED or REJECTED
-          export HARNESS_APPROVAL_STATUS=ACCEPTED
+          # Following must be APPROVED or REJECTED
+          export HARNESS_APPROVAL_STATUS=APPROVED
         retryInterval: 30000
     stageName: PRE_CHECK
     timeoutMillis: 86400000
