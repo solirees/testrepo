@@ -5,12 +5,11 @@ pipelineStages:
   name: Approval 0
   parallel: false
   properties:
-    workflowVariables: null
     approvalStateParams:
       shellScriptApprovalParams:
         scriptString: |-
           # Following must be ACCEPTED or REJECTED
-          HARNESS_APPROVAL_STATUS=REJECTED
+          HARNESS_APPROVAL_STATUS=ACCEPTED
         retryInterval: 30000
     stageName: PRE_CHECK
     timeoutMillis: 86400000
