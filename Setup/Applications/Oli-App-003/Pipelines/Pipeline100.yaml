@@ -19,7 +19,7 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: PRE_CHECK
 - type: ENV_STATE
-  name: Workflow100
+  name: Rolling100
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
