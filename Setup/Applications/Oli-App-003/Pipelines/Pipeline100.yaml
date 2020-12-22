@@ -5,6 +5,7 @@ pipelineStages:
   name: Approval 0
   parallel: false
   properties:
+    workflowVariables: null
     approvalStateParams:
       shellScriptApprovalParams:
         scriptString: |-
@@ -23,4 +24,11 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: DEPLOY
-  workflowName: Workflow100
+  workflowName: Rolling100
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: oli-local-client001
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: infra-default
