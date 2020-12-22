@@ -26,9 +26,11 @@ pipelineStages:
   stageName: DEPLOY
   workflowName: Rolling100
   workflowVariables:
+  - name: clientenv
+    value: ${dum}
   - entityType: ENVIRONMENT
     name: Environment
-    value: oli-local-client001
+    value: ${env}
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
-    value: infra-default
+    value: ${infra}
