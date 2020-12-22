@@ -110,4 +110,10 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Test100
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  allowedValues: client001,client002,client003
+  fixed: false
+  mandatory: true
+  name: client
