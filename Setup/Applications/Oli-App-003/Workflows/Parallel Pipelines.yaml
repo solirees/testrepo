@@ -14,11 +14,6 @@ phases:
   phaseSteps:
   - type: PREPARE_STEPS
     name: Prepare Steps
-    stepSkipStrategies:
-    - assertionExpression: 1==1
-      scope: SPECIFIC_STEPS
-      steps:
-      - IO Test
     steps:
     - type: SHELL_SCRIPT
       name: Run Pipelines
