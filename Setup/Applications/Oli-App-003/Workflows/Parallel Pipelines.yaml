@@ -65,9 +65,7 @@ phases:
         publishAsVar: false
         scriptString: |-
           echo "Launching Python script..."
-
-          /usr/bin/python3 /opt/hs/oli.py
-
+          /opt/hs/oli.py
           exit $?
         scriptType: BASH
         sshKeyRef: null
