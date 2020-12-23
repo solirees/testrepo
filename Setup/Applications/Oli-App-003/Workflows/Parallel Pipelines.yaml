@@ -66,7 +66,7 @@ phases:
         scriptString: |-
           echo "Launching Python script..."
 
-          python3 -u /opt/hs/oli.py
+          /usr/bin/python3 /opt/hs/oli.py
 
           exit $?
         scriptType: BASH
