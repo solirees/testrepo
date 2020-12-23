@@ -53,7 +53,7 @@ phases:
         templateVersion: null
         timeoutMillis: 300000
     - type: SHELL_SCRIPT
-      name: Shell Script_2
+      name: IO Test
       properties:
         commandPath: null
         connectionAttributes: null
@@ -74,7 +74,9 @@ phases:
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 180000
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
