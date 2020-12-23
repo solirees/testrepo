@@ -52,6 +52,30 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 300000
+    - type: SHELL_SCRIPT
+      name: Shell Script_2
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        delegateSelectors:
+        - oli-mk-delegate-sasyuu-0
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        scriptString: |-
+          echo "Launching Python script..."
+
+          python3 /opt/hs/oli.py
+
+          exit $?
+        scriptType: BASH
+        sshKeyRef: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 180000
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
