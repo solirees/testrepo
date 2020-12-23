@@ -18,7 +18,7 @@ phases:
     - assertionExpression: 1==1
       scope: SPECIFIC_STEPS
       steps:
-      - Run Pipelines
+      - IO Test
     steps:
     - type: SHELL_SCRIPT
       name: Run Pipelines
