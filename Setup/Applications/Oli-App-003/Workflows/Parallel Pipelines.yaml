@@ -47,7 +47,7 @@ phases:
 
           # CSV serviceName:ArtifactSourceName:buildNumber
           #export HARNESS_SERVICE_INPUTS='Test100:robotshop_payment:0.5.2'
-          export HARNESS_SERVICE_INPUTS='Test100:robotshop_payment:0.5.2,Test200:robotshop_shipping:0.5.2'
+          export HARNESS_SERVICE_INPUTS='Test100:robotshop_payment:0.5.2,Test200:robotshop_shipping:0.4.30'
 
           /opt/hs/app.py
 
