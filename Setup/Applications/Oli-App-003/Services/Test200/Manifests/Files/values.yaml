@@ -1,5 +1,5 @@
-name: olitest
-replicas: 3
+name: sc-web
+replicas: 1
 
 image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
