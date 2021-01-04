@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: DEPLOY
+  stageName: STAGE 2
   workflowName: Rolling100
   workflowVariables:
   - entityType: ENVIRONMENT
@@ -17,7 +17,7 @@ pipelineStages:
     value: ${infra}
 - type: ENV_STATE
   name: Rolling200
-  parallel: false
+  parallel: true
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
