@@ -40,8 +40,8 @@ phases:
 
           export HARNESS_PIPELINE_NAME="Pipeline100"
 
-          #export HARNESS_ENVIRONMENT_LIST="oli-local-client001,oli-local-client002,oli-local-client003"
-          export HARNESS_ENVIRONMENT_LIST="oli-local-client001"
+          #export HARNESS_ENVIRONMENT_LIST="oli-local-client001"
+          export HARNESS_ENVIRONMENT_LIST="oli-local-client001,oli-local-client002,oli-local-client003"
 
           export HARNESS_INFRA_NAME='infra-default'
 
