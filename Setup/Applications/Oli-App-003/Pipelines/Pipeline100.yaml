@@ -14,7 +14,7 @@ pipelineStages:
     value: ${env}
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
-    value: ${infra}
+    value: ${infraRolling100}
 - type: ENV_STATE
   name: Rolling200
   parallel: true
