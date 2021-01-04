@@ -1,4 +1,4 @@
-name: sc-web
+name: scweb
 replicas: 1
 
 image: ${artifact.metadata.image}
