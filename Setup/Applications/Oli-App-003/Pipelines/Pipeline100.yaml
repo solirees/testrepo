@@ -15,3 +15,17 @@ pipelineStages:
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: ${infra}
+- type: ENV_STATE
+  name: Rolling200
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: Rolling200
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: ${env}
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: ${infra}
