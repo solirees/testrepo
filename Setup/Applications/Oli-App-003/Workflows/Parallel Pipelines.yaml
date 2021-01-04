@@ -37,7 +37,7 @@ phases:
           Pipeline100\"\n\n#export HARNESS_ENVIRONMENT_LIST=\"oli-local-client001,oli-local-client002,oli-local-client003\"\
           \nexport HARNESS_ENVIRONMENT_LIST=\"oli-local-client001\"\n\nexport HARNESS_INFRA_NAME='infra-default'\n\
           \n# CSV serviceName:ArtifactSourceName:buildNumber\n#export HARNESS_SERVICE_INPUTS='Test100:robotshop_rs-payment:0.5.2'\n\
-          export HARNESS_SERVICE_INPUTS='Test100:robotshop_rs-payment:0.5.2,Test200:robotshop_rs-web:0.5.2'\n\
+          export HARNESS_SERVICE_INPUTS='Test100:robotshop_payment:0.5.2,Test200:robotshop_shipping:0.5.2'\n\
           \n/opt/hs/app.py\n\nexit $?"
         scriptType: BASH
         sshKeyRef: null
