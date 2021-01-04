@@ -28,4 +28,4 @@ pipelineStages:
     value: ${env}
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
-    value: ${infra}
+    value: ${infra200}
