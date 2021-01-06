@@ -16,7 +16,7 @@ phases:
     name: Prepare Steps
     steps:
     - type: SHELL_SCRIPT
-      name: runParallelPipelines2
+      name: runParallelPipelines
       properties:
         commandPath: null
         connectionAttributes: null
@@ -24,7 +24,7 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: "export HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNESS_API_KEY=U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=\n\
+        scriptString: "export HARNESS_ACCOUNT_ID=${env.AccountId}\nexport HARNESS_API_KEY=U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=\n\
           export HARNESS_APPLICATION_NAME=Oli-App-003\nexport HARNESS_PIPELINE_NAME=\"\
           Deploy App\"\n\n# CSV to set list of environments to deploy to\nexport HARNESS_ENVIRONMENT_LIST=\"\
           sc-client001,sc-client002,sc-client003\"\n#export HARNESS_ENVIRONMENT_LIST=\"\
@@ -111,7 +111,9 @@ phases:
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 600000
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
