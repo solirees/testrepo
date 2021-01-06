@@ -42,7 +42,7 @@ phases:
           export HARNESS_ENVIRONMENT_LIST="sc-client001"
 
           # CSV name:value (use to set infrastructure definition names)
-          export HARNESS_VARIABLE_INPUTS='infra100:infra-default,infra200:infra-default'
+          export HARNESS_VARIABLE_INPUTS='if-payment:infra-default,if-shipping:infra-default'
 
           # CSV serviceName:ArtifactSourceName:buildNumber
           export HARNESS_SERVICE_INPUTS='Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2'
