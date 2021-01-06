@@ -16,37 +16,6 @@ phases:
     name: Prepare Steps
     steps:
     - type: SHELL_SCRIPT
-      name: runParallelPipelines
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        delegateSelectors:
-        - oli-mk-delegate-sasyuu-0
-        executeOnDelegate: true
-        host: null
-        publishAsVar: false
-        sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        timeoutMillis: 600000
-      templateUri: App/Harness SE/runParallelPipelines:latest
-      templateVariables:
-      - name: environment_list
-        value: sc-client001
-      - name: variable_inputs
-        value: if-payment:infra-default,if-shipping:infra-default
-      - name: pipeline_name
-        value: Deploy App
-      - name: application_name
-        value: Oli-App-003
-      - name: service_inputs
-        value: Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2
-      - name: account_id
-        value: SAsyUUHTTImuYSZ35HPDvw
-      - name: api_key
-        value: U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=“$
-    - type: SHELL_SCRIPT
       name: runParallelPipelines2
       properties:
         commandPath: null
