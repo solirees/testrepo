@@ -148,6 +148,7 @@ phases:
       - name: pipeline_name
         value: Deploy App
       - name: account_id
+        value: SAsyUUHTTImuYSZ35HPDvw
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
