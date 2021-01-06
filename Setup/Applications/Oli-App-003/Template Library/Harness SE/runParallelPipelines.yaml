@@ -96,3 +96,5 @@ variables:
 - description: Leave as Default
   name: account_id
   value: ${env.accountId}
+- name: api_key
+  value: ${secrets.getValue("oli-graphql-api-key")}
