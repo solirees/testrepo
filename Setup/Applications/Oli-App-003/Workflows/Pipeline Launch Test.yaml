@@ -21,7 +21,7 @@ phases:
       - runParallelPipelines
     steps:
     - type: SHELL_SCRIPT
-      name: Check Variables
+      name: Set Context
       properties:
         commandPath: null
         connectionAttributes: null
@@ -30,12 +30,12 @@ phases:
         executeOnDelegate: true
         host: null
         outputVars: ''
-        publishAsVar: false
-        scriptString: 'echo "Test Account ID: ${workflow.variables.env_list}"'
+        publishAsVar: true
+        scriptString: export SERVICE_INPUTS="Payment:robotshop_payment:${workflow.variables.payment_version},Shipping:robotshop_shipping:${workflow.variables.shipping_version}"
         scriptType: BASH
         sshKeyRef: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
+        sweepingOutputName: SERVICE_INPUTS
+        sweepingOutputScope: WORKFLOW
         templateExpressions: null
         templateUuid: null
         templateVariables: null
