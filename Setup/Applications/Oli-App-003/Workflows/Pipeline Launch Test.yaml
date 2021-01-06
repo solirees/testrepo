@@ -33,19 +33,19 @@ phases:
       templateUri: App/Harness SE/runParallelPipelines:latest
       templateVariables:
       - name: environment_list
-        value: ${workflow.variables.env_list}
+        value: sc-client001
       - name: variable_inputs
         value: if-payment:infra-default,if-shipping:infra-default
       - name: pipeline_name
         value: Deploy App
       - name: application_name
-        value: ${app.name}
+        value: Oli-App-003
       - name: service_inputs
         value: Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2
       - name: account_id
-        value: ${env.accountId}
+        value: SAsyUUHTTImuYSZ35HPDvw
       - name: api_key
-        value: ${secrets.getValue("oli-graphql-api-key")}
+        value: U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=“$${secrets.getValue("oli-graphql-api-key")}
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
