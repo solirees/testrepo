@@ -1,9 +1,9 @@
 harnessApiVersion: '1.0'
 type: TRIGGER
 artifactSelections:
-- artifactStreamName: robotshop_rs-payment
+- artifactStreamName: robotshop_payment
   regex: false
-  serviceName: Test100
+  serviceName: Payments
   type: WEBHOOK_VARIABLE
 continueWithDefaultValues: false
 executionName: Pipeline100
