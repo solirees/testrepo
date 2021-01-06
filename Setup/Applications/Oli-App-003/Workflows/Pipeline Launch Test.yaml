@@ -20,6 +20,8 @@ phases:
       properties:
         commandPath: null
         connectionAttributes: null
+        delegateSelectors:
+        - oli-mk-delegate-sasyuu-0
         executeOnDelegate: true
         host: null
         publishAsVar: false
