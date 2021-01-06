@@ -35,13 +35,13 @@ phases:
       - name: environment_list
         value: ${workflow.variables.env_list}
       - name: variable_inputs
-        value: ${workflow.variables.var_inputs}
+        value: if-payment:infra-default,if-shipping:infra-default
       - name: pipeline_name
-        value: ${workflow.variables.pipe_name}
+        value: Deploy App
       - name: application_name
         value: ${app.name}
       - name: service_inputs
-        value: ${workflow.variables.svc_inputs}
+        value: Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2
       - name: account_id
         value: ${env.accountId}
     stepsInParallel: false
