@@ -79,3 +79,4 @@ timeoutMillis: 600000
 variables:
 - description: List of environments to deploy to
   name: env_list
+  value: ${workflow.variables.env_list}
