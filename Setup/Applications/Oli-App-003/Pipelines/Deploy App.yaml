@@ -16,7 +16,7 @@ pipelineStages:
     name: InfraDefinition_KUBERNETES
     value: ${infra100}
 - type: ENV_STATE
-  name: Rolling200
+  name: Shipping
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
