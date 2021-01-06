@@ -3,8 +3,8 @@ type: SHELL_SCRIPT
 scriptString: "\nexport HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNESS_API_KEY=U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=\n\
   export HARNESS_APPLICATION_NAME=Oli-App-003\nexport HARNESS_PIPELINE_NAME=\"Deploy\
   \ App\"\n\n# CSV to set list of environments to deploy to\n#export HARNESS_ENVIRONMENT_LIST=\"\
-  sc-client001,sc-client002,sc-client003\"\nexport HARNESS_ENVIRONMENT_LIST=\"sc-client001\"\
-  \n\n# CSV name:value (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS='if-payment:infra-default,if-shipping:infra-default'\n\
+  ${env_list}\"\nexport HARNESS_ENVIRONMENT_LIST=\"sc-client001\"\n\n# CSV name:value\
+  \ (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS='if-payment:infra-default,if-shipping:infra-default'\n\
   \n# CSV serviceName:ArtifactSourceName:buildNumber\nexport HARNESS_SERVICE_INPUTS='Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2'\n\
   \n\n# Run Python script to launch and monitor pipelines to completion\npython3 -u\
   \  << 'EOF'\n\nimport requests\nimport json\nimport os\nimport sys\nimport time\n\
@@ -76,3 +76,6 @@ scriptString: "\nexport HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNES
   exit $?"
 scriptType: BASH
 timeoutMillis: 600000
+variables:
+- description: List of environments to deploy to
+  name: env_list
