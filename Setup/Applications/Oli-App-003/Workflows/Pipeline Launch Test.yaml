@@ -32,8 +32,18 @@ phases:
         timeoutMillis: 600000
       templateUri: App/Harness SE/runParallelPipelines:latest
       templateVariables:
-      - name: env_list
+      - name: environment_list
         value: ${workflow.variables.env_list}
+      - name: variable_inputs
+        value: ${workflow.variables.var_inputs}
+      - name: pipeline_name
+        value: ${workflow.variables.pipe_name}
+      - name: application_name
+        value: ${app.name}
+      - name: service_inputs
+        value: ${workflow.variables.svc_inputs}
+      - name: account_id
+        value: ${env.accountId}
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
