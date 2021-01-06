@@ -147,6 +147,7 @@ phases:
         value: Oli-App-003
       - name: pipeline_name
         value: Deploy App
+      - name: account_id
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
