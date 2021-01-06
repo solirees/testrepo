@@ -1,13 +1,13 @@
 harnessApiVersion: '1.0'
 type: SHELL_SCRIPT
 scriptString: "# Set up required environment variables\nexport HARNESS_ACCOUNT_ID=\"\
-  ${account_id}\"\nexport HARNESS_API_KEY=\"${api_key}\"\nexport HARNESS_APPLICATION_NAME=\"\
-  ${application_name}\"\nexport HARNESS_PIPELINE_NAME=\"${pipeline_name}\"\n\n# CSV\
-  \ to set list of environments to deploy to\nexport HARNESS_ENVIRONMENT_LIST=\"${environment_list}\"\
-  \n\n# CSV name:value (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS=\"\
-  ${variable_inputs}\"\n\n# CSV serviceName:ArtifactSourceName:buildNumber\nexport\
-  \ HARNESS_SERVICE_INPUTS=\"${service_inputs}\"\n\n\n# Run Python script to launch\
-  \ and monitor pipelines to completion\npython3 -u  << 'EOF'\n\nimport requests\n\
+  ${account_id}\"\nexport HARNESS_API_KEY=\"U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=“\
+  $\"\nexport HARNESS_APPLICATION_NAME=\"${application_name}\"\nexport HARNESS_PIPELINE_NAME=\"\
+  ${pipeline_name}\"\n\n# CSV to set list of environments to deploy to\nexport HARNESS_ENVIRONMENT_LIST=\"\
+  ${environment_list}\"\n\n# CSV name:value (use to set infrastructure definition\
+  \ names)\nexport HARNESS_VARIABLE_INPUTS=\"${variable_inputs}\"\n\n# CSV serviceName:ArtifactSourceName:buildNumber\n\
+  export HARNESS_SERVICE_INPUTS=\"${service_inputs}\"\n\n\n# Run Python script to\
+  \ launch and monitor pipelines to completion\npython3 -u  << 'EOF'\n\nimport requests\n\
   import json\nimport os\nimport sys\nimport time\nimport datetime\n\nACCOUNT_ID =\
   \ os.environ.get('HARNESS_ACCOUNT_ID')\nAPI_KEY = os.environ.get('HARNESS_API_KEY')\n\
   APPLICATION_NAME = os.environ.get('HARNESS_APPLICATION_NAME')\nPIPELINE_NAME = os.environ.get('HARNESS_PIPELINE_NAME')\n\
