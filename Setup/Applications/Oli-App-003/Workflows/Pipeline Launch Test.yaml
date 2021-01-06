@@ -42,4 +42,10 @@ phases:
     stepsInParallel: false
   provisionNodes: false
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: env_list
+  value: sc-client001:sc-client002
