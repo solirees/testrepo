@@ -14,6 +14,11 @@ phases:
   phaseSteps:
   - type: PREPARE_STEPS
     name: Prepare Steps
+    stepSkipStrategies:
+    - assertionExpression: 1==1
+      scope: SPECIFIC_STEPS
+      steps:
+      - runParallelPipelines
     steps:
     - type: SHELL_SCRIPT
       name: Check Variables
