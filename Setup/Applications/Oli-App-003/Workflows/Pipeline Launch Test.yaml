@@ -158,6 +158,8 @@ phases:
       templateVariables:
       - name: environment_list
         value: ${workflow.variables.env_list}
+      - name: service_inputs
+        value: $workflow.variables.svc_inputs}
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
