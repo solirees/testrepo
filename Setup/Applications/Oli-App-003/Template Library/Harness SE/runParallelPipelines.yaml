@@ -77,6 +77,6 @@ scriptString: "\nexport HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNES
 scriptType: BASH
 timeoutMillis: 600000
 variables:
-- description: List of environments to deploy to
+- description: CSV list of environments to deploy to
   name: env_list
   value: ${workflow.variables.env_list}
