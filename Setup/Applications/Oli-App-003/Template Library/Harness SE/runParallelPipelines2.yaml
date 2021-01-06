@@ -83,3 +83,5 @@ variables:
   name: service_inputs
 - description: CSV with format "Name:Value" for workflow variables (e.g. to map to infra definitions)
   name: variable_inputs
+- name: application_name
+- name: pipeline_name
