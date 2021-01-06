@@ -28,7 +28,7 @@ phases:
         sweepingOutputScope: null
         templateExpressions: null
         timeoutMillis: 600000
-      templateUri: App/Harness SE/run-parallel-piplines:latest
+      templateUri: App/Harness SE/runParallelPipelines:latest
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
