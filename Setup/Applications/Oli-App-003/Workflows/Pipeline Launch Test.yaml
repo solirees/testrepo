@@ -45,7 +45,7 @@ phases:
       - name: account_id
         value: SAsyUUHTTImuYSZ35HPDvw
       - name: api_key
-        value: U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=“$${secrets.getValue("oli-graphql-api-key")}
+        value: U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=“$
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
