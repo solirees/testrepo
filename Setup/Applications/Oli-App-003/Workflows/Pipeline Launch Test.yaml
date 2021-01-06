@@ -143,6 +143,8 @@ phases:
         value: Payment:robotshop_payment:${workflow.variables.payment_version},Shipping:robotshop_shipping:${workflow.variables.shipping_version}
       - name: variable_inputs
         value: if-payment:infra-default,if-shipping:infra-default
+      - name: application_name
+      - name: pipeline_name
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
