@@ -144,7 +144,9 @@ phases:
       - name: variable_inputs
         value: if-payment:infra-default,if-shipping:infra-default
       - name: application_name
+        value: Oli-App-003
       - name: pipeline_name
+        value: Deploy App
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
