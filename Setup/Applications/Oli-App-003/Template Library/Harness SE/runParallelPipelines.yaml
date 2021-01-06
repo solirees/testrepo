@@ -88,4 +88,4 @@ variables:
 - name: account_id
   value: SAsyUUHTTImuYSZ35HPDvw
 - name: api_key
-  value: ${secrets.getValue("oli-graphql-api-key")}=
+  value: ${secrets.getValue("oli-graphql-api-key")}
