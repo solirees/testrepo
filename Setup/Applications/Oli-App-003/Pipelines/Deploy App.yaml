@@ -2,7 +2,7 @@ harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
 - type: ENV_STATE
-  name: Rolling100
+  name: Payments
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
