@@ -159,7 +159,7 @@ phases:
       - name: environment_list
         value: ${workflow.variables.env_list}
       - name: service_inputs
-        value: $workflow.variables.svc_inputs}
+        value: Payment:robotshop_payment:${workflow.variables.payment_version},Shipping:robotshop_shipping:${workflow.variables.shipping_version}
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
