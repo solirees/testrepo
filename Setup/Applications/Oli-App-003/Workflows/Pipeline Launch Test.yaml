@@ -44,6 +44,8 @@ phases:
         value: Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2
       - name: account_id
         value: ${env.accountId}
+      - name: api_key
+        value: ${secrets.getValue("oli-graphql-api-key")}
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
