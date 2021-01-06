@@ -4,7 +4,7 @@ scriptString: "export HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNESS_
   export HARNESS_APPLICATION_NAME=Oli-App-003\nexport HARNESS_PIPELINE_NAME=\"Deploy\
   \ App\"\n\n# CSV to set list of environments to deploy to\nexport HARNESS_ENVIRONMENT_LIST=\"\
   ${environment_list}\"\n\n# CSV name:value (use to set infrastructure definition\
-  \ names)\nexport HARNESS_VARIABLE_INPUTS=\"${variable_inputs}\n\n# CSV serviceName:ArtifactSourceName:buildNumber\n\
+  \ names)\nexport HARNESS_VARIABLE_INPUTS=\"${variable_inputs}\"\n\n# CSV serviceName:ArtifactSourceName:buildNumber\n\
   export HARNESS_SERVICE_INPUTS=\"${service_inputs}\"\n\n\n# Run Python script to\
   \ launch and monitor pipelines to completion\npython3 -u  << 'EOF'\n\nimport requests\n\
   import json\nimport os\nimport sys\nimport time\nimport datetime\n\nACCOUNT_ID =\
