@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Shipping
+  stageName: Services
   workflowName: Deploy Payments
   workflowVariables:
   - entityType: ENVIRONMENT
@@ -20,7 +20,7 @@ pipelineStages:
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Shipping
+  stageName: Services
   workflowName: Deploy Shipping
   workflowVariables:
   - entityType: ENVIRONMENT
