@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Payments
+  stageName: Shipping
   workflowName: Deploy Payments
   workflowVariables:
   - entityType: ENVIRONMENT
@@ -16,11 +16,11 @@ pipelineStages:
     name: InfraDefinition_KUBERNETES
     value: ${infra100}
 - type: ENV_STATE
-  name: Shipping
+  name: Deploy Shipping
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Payments
+  stageName: Shipping
   workflowName: Deploy Shipping
   workflowVariables:
   - entityType: ENVIRONMENT
