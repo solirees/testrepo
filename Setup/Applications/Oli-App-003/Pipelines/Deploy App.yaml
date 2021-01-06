@@ -7,14 +7,14 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: Update Services
-  workflowName: Deploy Payments
+  workflowName: Deploy Payment
   workflowVariables:
   - entityType: ENVIRONMENT
     name: Environment
     value: ${env}
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
-    value: ${infra100}
+    value: ${if-payments}
 - type: ENV_STATE
   name: Deploy Shipping
   parallel: true
