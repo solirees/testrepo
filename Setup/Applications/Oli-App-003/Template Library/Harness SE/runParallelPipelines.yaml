@@ -72,6 +72,7 @@ scriptString: "\nexport HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNES
   \        result[curStatus] += 1\n\n        # Track number of finished pipeline\n\
   \        nDone += 1\n\n  if nDone == nTotal:\n     summary = 'Summary (%s pipelines):'\
   \ % (nTotal)\n     for key in result:\n       summary += ' %s=%s' % (key, result[key])\n\
-  \     print (summary)\n     exit(0)\n\n  time.sleep(10)\n\nsys.exit(0)\n\nEOF"
+  \     print (summary)\n     exit(0)\n\n  time.sleep(10)\n\nsys.exit(0)\n\nEOF\n\n\
+  exit $?"
 scriptType: BASH
 timeoutMillis: 600000
