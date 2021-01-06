@@ -1,31 +1,32 @@
 harnessApiVersion: '1.0'
 type: SHELL_SCRIPT
-scriptString: "\nexport HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNESS_API_KEY=U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=\n\
-  export HARNESS_APPLICATION_NAME=Oli-App-003\nexport HARNESS_PIPELINE_NAME=\"Deploy\
-  \ App\"\n\n# CSV to set list of environments to deploy to\nexport HARNESS_ENVIRONMENT_LIST=\"\
-  ${env_list}\"\n#export HARNESS_ENVIRONMENT_LIST=\"sc-client001\"\n\n# CSV name:value\
-  \ (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS='if-payment:infra-default,if-shipping:infra-default'\n\
-  \n# CSV serviceName:ArtifactSourceName:buildNumber\nexport HARNESS_SERVICE_INPUTS='Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2'\n\
-  \n\n# Run Python script to launch and monitor pipelines to completion\npython3 -u\
-  \  << 'EOF'\n\nimport requests\nimport json\nimport os\nimport sys\nimport time\n\
-  import datetime\n\nACCOUNT_ID = os.environ.get('HARNESS_ACCOUNT_ID')\nAPI_KEY =\
-  \ os.environ.get('HARNESS_API_KEY')\nAPPLICATION_NAME = os.environ.get('HARNESS_APPLICATION_NAME')\n\
-  PIPELINE_NAME = os.environ.get('HARNESS_PIPELINE_NAME')\nSERVICE_INPUTS = os.environ.get('HARNESS_SERVICE_INPUTS')\n\
-  VARIABLE_INPUTS = os.environ.get('HARNESS_VARIABLE_INPUTS')\nENVIRONMENT_LIST =\
-  \ os.environ.get('HARNESS_ENVIRONMENT_LIST') \n\nglobal URL\nURL = \"https://app.harness.io/gateway/api/graphql?accountId=\"\
-  \ + ACCOUNT_ID\n\ndef getAppByName(appName):\n    pload = '''\n      { \n      \
-  \  applicationByName(name: \"%s\") { \n          id\n        }\n      } \n    '''\
-  \ % (appName)\n\n    print (\"Getting Harness App ID\")\n\n    response = requests.post(URL,\
-  \ headers={'x-api-key': API_KEY}, data=pload)\n\n    json_response = response.json()\n\
-  \    appId = json_response['data']['applicationByName']['id']\n    print (\"Application\
-  \ ID is:\" + appId)\n\n    return(appId)\n\ndef getPipelineByName(appId, plName):\n\
-  \    pload = '''\n      {\n        pipelineByName( pipelineName: \"%s\", applicationId:\
-  \ \"%s\") {\n            id\n      }\n    }\n    ''' % (plName, appId)\n\n    print\
-  \ (\"Getting Harness Pipeline ID\")\n\n    response = requests.post(URL, headers={'x-api-key':\
-  \ API_KEY}, data=pload)\n    json_response = response.json()\n    pl_id = json_response['data']['pipelineByName']['id']\n\
-  \    print (\"Pipeline ID is:\" + pl_id)\n    return(pl_id)\n\ndef launchPipeline(appId,\
-  \ pipelineId, envRef, svcListRef, varListRef):\n\n    # Build list of strings for\
-  \ serviceInputs\n    svcStrList = []\n    for svcRef in svcListRef:\n      svcStrList.append('{\
+scriptString: "# Set up required environment variables\nexport HARNESS_ACCOUNT_ID=\"\
+  ${account_id}\nexport HARNESS_API_KEY=\"${api_key}\nexport HARNESS_APPLICATION_NAME=\"\
+  ${application_name}\"\nexport HARNESS_PIPELINE_NAME=\"${pipeline_name}\"\n\n# CSV\
+  \ to set list of environments to deploy to\nexport HARNESS_ENVIRONMENT_LIST=\"${environment_list}\"\
+  \n\n# CSV name:value (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS=\"\
+  ${variable_inputs}\"\n\n# CSV serviceName:ArtifactSourceName:buildNumber\nexport\
+  \ HARNESS_SERVICE_INPUTS=\"${service_inputs}\"\n\n\n# Run Python script to launch\
+  \ and monitor pipelines to completion\npython3 -u  << 'EOF'\n\nimport requests\n\
+  import json\nimport os\nimport sys\nimport time\nimport datetime\n\nACCOUNT_ID =\
+  \ os.environ.get('HARNESS_ACCOUNT_ID')\nAPI_KEY = os.environ.get('HARNESS_API_KEY')\n\
+  APPLICATION_NAME = os.environ.get('HARNESS_APPLICATION_NAME')\nPIPELINE_NAME = os.environ.get('HARNESS_PIPELINE_NAME')\n\
+  SERVICE_INPUTS = os.environ.get('HARNESS_SERVICE_INPUTS')\nVARIABLE_INPUTS = os.environ.get('HARNESS_VARIABLE_INPUTS')\n\
+  ENVIRONMENT_LIST = os.environ.get('HARNESS_ENVIRONMENT_LIST') \n\nglobal URL\nURL\
+  \ = \"https://app.harness.io/gateway/api/graphql?accountId=\" + ACCOUNT_ID\n\ndef\
+  \ getAppByName(appName):\n    pload = '''\n      { \n        applicationByName(name:\
+  \ \"%s\") { \n          id\n        }\n      } \n    ''' % (appName)\n\n    print\
+  \ (\"Getting Harness App ID\")\n\n    response = requests.post(URL, headers={'x-api-key':\
+  \ API_KEY}, data=pload)\n\n    json_response = response.json()\n    appId = json_response['data']['applicationByName']['id']\n\
+  \    print (\"Application ID is:\" + appId)\n\n    return(appId)\n\ndef getPipelineByName(appId,\
+  \ plName):\n    pload = '''\n      {\n        pipelineByName( pipelineName: \"%s\"\
+  , applicationId: \"%s\") {\n            id\n      }\n    }\n    ''' % (plName, appId)\n\
+  \n    print (\"Getting Harness Pipeline ID\")\n\n    response = requests.post(URL,\
+  \ headers={'x-api-key': API_KEY}, data=pload)\n    json_response = response.json()\n\
+  \    pl_id = json_response['data']['pipelineByName']['id']\n    print (\"Pipeline\
+  \ ID is:\" + pl_id)\n    return(pl_id)\n\ndef launchPipeline(appId, pipelineId,\
+  \ envRef, svcListRef, varListRef):\n\n    # Build list of strings for serviceInputs\n\
+  \    svcStrList = []\n    for svcRef in svcListRef:\n      svcStrList.append('{\
   \ name: \"%s\", artifactValueInput: { valueType: BUILD_NUMBER buildNumber: { buildNumber:\
   \ \"%s\" artifactSourceName: \"%s\" } } }' % (svcRef['svc_name'], svcRef['build_no'],\
   \ svcRef['artifact_name']))\n\n    # Build list of strings for variableInputs\n\
@@ -78,5 +79,20 @@ scriptType: BASH
 timeoutMillis: 600000
 variables:
 - description: CSV list of environments to deploy to
-  name: env_list
+  name: environment_list
   value: ${workflow.variables.env_list}
+- description: CSV of vairable inputs with format "name:value". Use this to define infra def names, for example
+  name: variable_inputs
+  value: ${workflow.variables.var_inputs}
+- description: Name of Pipeline that will be launched for each environment
+  name: pipeline_name
+  value: ${workflow.variables.pipe_name}
+- description: Leave as Default
+  name: application_name
+  value: ${app.name}
+- description: CSV list of services with format "Name:Path:BuildNo"
+  name: service_inputs
+  value: ${workflow.variables.svc_inputs}
+- description: Leave as Default
+  name: account_id
+  value: ${env.accountId}
