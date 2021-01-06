@@ -21,27 +21,6 @@ phases:
       - runParallelPipelines
     steps:
     - type: SHELL_SCRIPT
-      name: Set Context
-      properties:
-        commandPath: null
-        connectionAttributes: null
-        delegateSelectors:
-        - oli-mk-delegate-sasyuu-0
-        executeOnDelegate: true
-        host: null
-        outputVars: ''
-        publishAsVar: true
-        scriptString: export SERVICE_INPUTS="Payment:robotshop_payment:${workflow.variables.payment_version},Shipping:robotshop_shipping:${workflow.variables.shipping_version}"
-        scriptType: BASH
-        sshKeyRef: null
-        sweepingOutputName: SERVICE_INPUTS
-        sweepingOutputScope: WORKFLOW
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
-    - type: SHELL_SCRIPT
       name: runParallelPipelines
       properties:
         commandPath: null
