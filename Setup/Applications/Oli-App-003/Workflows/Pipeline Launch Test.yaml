@@ -16,7 +16,7 @@ phases:
     name: Prepare Steps
     steps:
     - type: SHELL_SCRIPT
-      name: runParallelPipelines2
+      name: runParallelPipelines
       properties:
         commandPath: null
         connectionAttributes: null
