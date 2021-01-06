@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
 type: SHELL_SCRIPT
 scriptString: "# Set up required environment variables\nexport HARNESS_ACCOUNT_ID=\"\
-  ${account_id}\nexport HARNESS_API_KEY=\"${api_key}\nexport HARNESS_APPLICATION_NAME=\"\
+  ${account_id}\"\nexport HARNESS_API_KEY=\"${api_key}\"\nexport HARNESS_APPLICATION_NAME=\"\
   ${application_name}\"\nexport HARNESS_PIPELINE_NAME=\"${pipeline_name}\"\n\n# CSV\
   \ to set list of environments to deploy to\nexport HARNESS_ENVIRONMENT_LIST=\"${environment_list}\"\
   \n\n# CSV name:value (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS=\"\
