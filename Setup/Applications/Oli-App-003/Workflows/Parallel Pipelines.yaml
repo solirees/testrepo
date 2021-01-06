@@ -38,8 +38,8 @@ phases:
           export HARNESS_PIPELINE_NAME="Deploy App"
 
           # CSV to set list of environments to deploy to
-          export HARNESS_ENVIRONMENT_LIST="oli-local-client001,oli-local-client002,oli-local-client003"
-          #export HARNESS_ENVIRONMENT_LIST="oli-local-client001"
+          #export HARNESS_ENVIRONMENT_LIST="sc-client001,sc-client002,sc-client003"
+          export HARNESS_ENVIRONMENT_LIST="sc-client001"
 
           # CSV name:value (use to set infrastructure definition names)
           export HARNESS_VARIABLE_INPUTS='infra100:infra-default,infra200:infra-default'
