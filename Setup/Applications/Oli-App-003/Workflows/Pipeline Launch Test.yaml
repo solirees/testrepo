@@ -14,6 +14,13 @@ phases:
   phaseSteps:
   - type: PREPARE_STEPS
     name: Prepare Steps
+    steps:
+    - type: SHELL_SCRIPT
+      name: run-parallel-piplines
+      properties:
+        executeOnDelegate: true
+        timeoutMillis: 600000
+      templateUri: App/Harness SE/run-parallel-piplines:latest
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
