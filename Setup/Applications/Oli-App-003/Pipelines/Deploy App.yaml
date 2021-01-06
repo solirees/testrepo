@@ -7,7 +7,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
-  workflowName: Rolling100
+  workflowName: Deploy Payments
   workflowVariables:
   - entityType: ENVIRONMENT
     name: Environment
@@ -21,7 +21,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
-  workflowName: Rolling200
+  workflowName: Deploy Shipping
   workflowVariables:
   - entityType: ENVIRONMENT
     name: Environment
