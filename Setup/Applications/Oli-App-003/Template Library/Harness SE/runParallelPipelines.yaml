@@ -3,7 +3,7 @@ type: SHELL_SCRIPT
 scriptString: |-
   python3 -u  << 'EOF'
   import sys
-  print 'Hello from Python'
+  print ('Hello from Python')
   EOF
 scriptType: BASH
 timeoutMillis: 600000
