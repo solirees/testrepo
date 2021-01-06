@@ -6,10 +6,10 @@ scriptString: "export HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNESS_
   ${environment_list}\"\n#export HARNESS_ENVIRONMENT_LIST=\"sc-client001\"\n\n# CSV\
   \ name:value (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS='if-payment:infra-default,if-shipping:infra-default'\n\
   \n# CSV serviceName:ArtifactSourceName:buildNumber\nexport HARNESS_SERVICE_INPUTS=\"\
-  ${service_inputs}'\n\n\n# Run Python script to launch and monitor pipelines to completion\n\
-  python3 -u  << 'EOF'\n\nimport requests\nimport json\nimport os\nimport sys\nimport\
-  \ time\nimport datetime\n\nACCOUNT_ID = os.environ.get('HARNESS_ACCOUNT_ID')\nAPI_KEY\
-  \ = os.environ.get('HARNESS_API_KEY')\nAPPLICATION_NAME = os.environ.get('HARNESS_APPLICATION_NAME')\n\
+  ${service_inputs}\"\n\n\n# Run Python script to launch and monitor pipelines to\
+  \ completion\npython3 -u  << 'EOF'\n\nimport requests\nimport json\nimport os\n\
+  import sys\nimport time\nimport datetime\n\nACCOUNT_ID = os.environ.get('HARNESS_ACCOUNT_ID')\n\
+  API_KEY = os.environ.get('HARNESS_API_KEY')\nAPPLICATION_NAME = os.environ.get('HARNESS_APPLICATION_NAME')\n\
   PIPELINE_NAME = os.environ.get('HARNESS_PIPELINE_NAME')\nSERVICE_INPUTS = os.environ.get('HARNESS_SERVICE_INPUTS')\n\
   VARIABLE_INPUTS = os.environ.get('HARNESS_VARIABLE_INPUTS')\nENVIRONMENT_LIST =\
   \ os.environ.get('HARNESS_ENVIRONMENT_LIST') \n\nglobal URL\nURL = \"https://app.harness.io/gateway/api/graphql?accountId=\"\
@@ -79,5 +79,5 @@ timeoutMillis: 600000
 variables:
 - name: environment_list
   value: ${workflow.variables.env_list}
-- name: service_inputs
-  value: $workflow.variables.svc_inputs}
+- description: CSV with format "Name:Path:BuildNo"
+  name: service_inputs
