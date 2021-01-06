@@ -1,0 +1,81 @@
+harnessApiVersion: '1.0'
+type: SHELL_SCRIPT
+scriptString: "export HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNESS_API_KEY=U0FzeVVVSFRUSW11WVNaMzVIUER2dzo6dXhhbjQwSWs3MmdmNllCTUZuams2bEZsWmFBeFZ3TzlyRkdkY1MzbXJCVjlESkV5Zld4bDNuNzZVNFEwaDZxSk96VmZPNzZKTzI5NnJ2YjA=\n\
+  export HARNESS_APPLICATION_NAME=Oli-App-003\nexport HARNESS_PIPELINE_NAME=\"Deploy\
+  \ App\"\n\n# CSV to set list of environments to deploy to\nexport HARNESS_ENVIRONMENT_LIST=\"\
+  ${environment_list}\"\n#export HARNESS_ENVIRONMENT_LIST=\"sc-client001\"\n\n# CSV\
+  \ name:value (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS='if-payment:infra-default,if-shipping:infra-default'\n\
+  \n# CSV serviceName:ArtifactSourceName:buildNumber\nexport HARNESS_SERVICE_INPUTS='Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2'\n\
+  \n\n# Run Python script to launch and monitor pipelines to completion\npython3 -u\
+  \  << 'EOF'\n\nimport requests\nimport json\nimport os\nimport sys\nimport time\n\
+  import datetime\n\nACCOUNT_ID = os.environ.get('HARNESS_ACCOUNT_ID')\nAPI_KEY =\
+  \ os.environ.get('HARNESS_API_KEY')\nAPPLICATION_NAME = os.environ.get('HARNESS_APPLICATION_NAME')\n\
+  PIPELINE_NAME = os.environ.get('HARNESS_PIPELINE_NAME')\nSERVICE_INPUTS = os.environ.get('HARNESS_SERVICE_INPUTS')\n\
+  VARIABLE_INPUTS = os.environ.get('HARNESS_VARIABLE_INPUTS')\nENVIRONMENT_LIST =\
+  \ os.environ.get('HARNESS_ENVIRONMENT_LIST') \n\nglobal URL\nURL = \"https://app.harness.io/gateway/api/graphql?accountId=\"\
+  \ + ACCOUNT_ID\n\ndef getAppByName(appName):\n    pload = '''\n      { \n      \
+  \  applicationByName(name: \"%s\") { \n          id\n        }\n      } \n    '''\
+  \ % (appName)\n\n    print (\"Getting Harness App ID\")\n\n    response = requests.post(URL,\
+  \ headers={'x-api-key': API_KEY}, data=pload)\n\n    json_response = response.json()\n\
+  \    appId = json_response['data']['applicationByName']['id']\n    print (\"Application\
+  \ ID is:\" + appId)\n\n    return(appId)\n\ndef getPipelineByName(appId, plName):\n\
+  \    pload = '''\n      {\n        pipelineByName( pipelineName: \"%s\", applicationId:\
+  \ \"%s\") {\n            id\n      }\n    }\n    ''' % (plName, appId)\n\n    print\
+  \ (\"Getting Harness Pipeline ID\")\n\n    response = requests.post(URL, headers={'x-api-key':\
+  \ API_KEY}, data=pload)\n    json_response = response.json()\n    pl_id = json_response['data']['pipelineByName']['id']\n\
+  \    print (\"Pipeline ID is:\" + pl_id)\n    return(pl_id)\n\ndef launchPipeline(appId,\
+  \ pipelineId, envRef, svcListRef, varListRef):\n\n    # Build list of strings for\
+  \ serviceInputs\n    svcStrList = []\n    for svcRef in svcListRef:\n      svcStrList.append('{\
+  \ name: \"%s\", artifactValueInput: { valueType: BUILD_NUMBER buildNumber: { buildNumber:\
+  \ \"%s\" artifactSourceName: \"%s\" } } }' % (svcRef['svc_name'], svcRef['build_no'],\
+  \ svcRef['artifact_name']))\n\n    # Build list of strings for variableInputs\n\
+  \    # Note: Initilise with target environment, where ${env} is pipline template\
+  \ variable name\n    varStrList = [ '{ name: \"env\" variableValue: { type: NAME\
+  \ value: \"%s\" } }' % (envRef['env_name']) ]\n    for varRef in varListRef:\n \
+  \     varStrList.append('{ name: \"%s\" variableValue: { type: NAME value: \"%s\"\
+  \ } }' % (varRef['name'], varRef['value']))\n    \n    # Set payload\n    pload\
+  \ = '''\n      mutation {\n        startExecution(input: {\n          applicationId:\
+  \ \"%s\"\n          entityId: \"%s\"\n          executionType: PIPELINE,\n     \
+  \     variableInputs: [\n            %s\n          ]\n          serviceInputs: [\n\
+  \            %s\n          ]\n        }\n        ){\n          clientMutationId\n\
+  \          execution{\n            id\n            status\n          }\n       \
+  \ }\n      }\n    ''' % (appId, pipelineId, \"\\n            \".join(varStrList),\
+  \ \",\\n            \".join(svcStrList))\n\n    print (\"\\n--- PIPELINE EXEC REQUEST\
+  \ ---\")\n    print (pload)\n\n    response = requests.post(URL, headers={'x-api-key':\
+  \ API_KEY}, data=pload)\n    json_response = response.json()\n\n    print (\"---\
+  \ PIPELINE EXEC RESPONSE ---\\n\")\n    print (json_response)\n\n    envRef['exec_id']\
+  \ = json_response['data']['startExecution']['execution']['id']\n    envRef['exec_status']\
+  \ = json_response['data']['startExecution']['execution']['status']\n\n    # Initial\
+  \ status\n    print ('%s: %s' % (envRef['env_name'], envRef['exec_status']))\n\n\
+  def getExecStatus(execId):\n    pload = '''\n      { \n        execution(executionId:\
+  \ \"%s\") { \n          status\n        }\n      } \n    ''' % (execId)\n\n    response\
+  \ = requests.post(URL, headers={'x-api-key': API_KEY}, data=pload)\n    json_response\
+  \ = response.json()\n    execStatus = json_response['data']['execution']['status']\n\
+  \    return(execStatus)\n\n### Start of Main ###\n\nDEFAULT='__default__'\n\n# List\
+  \ of hashes to track status\nenvList=[]\n\n# List of hashes for service inputs\n\
+  svcList=[]\n\n# List of hashes for variable inputs\nvarList=[]\n\napp_id = getAppByName(APPLICATION_NAME)\n\
+  pl_id = getPipelineByName(app_id, PIPELINE_NAME)\n\n# Extract service inputs into\
+  \ list\nfor s in (SERVICE_INPUTS.split(',')):\n  arr=s.split(':')\n  svcList.append({'svc_name':\
+  \ arr[0], 'artifact_name': arr[1], 'build_no': arr[2]})\n\n# Extract variable inputs\
+  \ into list\nfor v in (VARIABLE_INPUTS.split(',')):\n  arr=v.split(':')\n  varList.append({'name':\
+  \ arr[0], 'value': arr[1]})\n\n# Launch pipelines (just take first service for now)\n\
+  for env in (ENVIRONMENT_LIST.split(',')):\n  n=len(envList)\n  envList.append({'env_name':\
+  \ env, 'exec_id': DEFAULT, 'exec_status': DEFAULT})\n  launchPipeline(app_id, pl_id,\
+  \ envList[n], svcList, varList)\n\n# Number of pipelines launched\nnTotal = len(envList)\n\
+  IN_PROGRESS_STATES = ['RUNNING', 'PAUSED']\n\n# Loop to completion\nresult={}\n\
+  nDone = 0\n\nwhile (1):\n  for ref in (envList):\n    curStatus = getExecStatus(ref['exec_id'])\n\
+  \    if curStatus != ref['exec_status']:\n\n      # Updated status for this pipeline\n\
+  \      ref['exec_status'] = curStatus\n      print ('%s: %s' % (ref['env_name'],\
+  \ ref['exec_status']))\n\n      if curStatus not in IN_PROGRESS_STATES:\n      \
+  \  # Job has finished\n        if curStatus not in result.keys():\n          # Initialise\n\
+  \          result[curStatus] = 0;\n\n        # Increment count for this status\n\
+  \        result[curStatus] += 1\n\n        # Track number of finished pipeline\n\
+  \        nDone += 1\n\n  if nDone == nTotal:\n     summary = 'Summary (%s pipelines):'\
+  \ % (nTotal)\n     for key in result:\n       summary += ' %s=%s' % (key, result[key])\n\
+  \     print (summary)\n     exit(0)\n\n  time.sleep(10)\n\nsys.exit(0)\n\nEOF\n\n\
+  exit $?"
+scriptType: BASH
+timeoutMillis: 600000
+variables:
+- name: environment_list
+  value: ${workflow.variables.env_list}
