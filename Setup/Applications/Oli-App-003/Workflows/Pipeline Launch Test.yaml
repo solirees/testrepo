@@ -176,3 +176,13 @@ userVariables:
   mandatory: true
   name: env_list
   value: sc-client001,sc-client002
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: payment_version
+  value: 0.5.2
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: shipping_version
+  value: 0.4.30
