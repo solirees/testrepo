@@ -16,9 +16,17 @@ phases:
     name: Prepare Steps
     steps:
     - type: SHELL_SCRIPT
-      name: run-parallel-piplines
+      name: runParallelPipelines
       properties:
+        commandPath: null
+        connectionAttributes: null
         executeOnDelegate: true
+        host: null
+        publishAsVar: false
+        sshKeyRef: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
         timeoutMillis: 600000
       templateUri: App/Harness SE/run-parallel-piplines:latest
     stepsInParallel: false
