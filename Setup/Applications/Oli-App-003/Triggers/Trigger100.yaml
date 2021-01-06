@@ -6,7 +6,7 @@ artifactSelections:
   serviceName: Payments
   type: WEBHOOK_VARIABLE
 continueWithDefaultValues: false
-executionName: Pipeline100
+executionName: Deploy App
 executionType: Pipeline
 triggerCondition:
 - type: WEBHOOK
