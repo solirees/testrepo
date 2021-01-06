@@ -141,6 +141,15 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 600000
+    - type: SHELL_SCRIPT
+      name: runParallelPipelines2
+      properties:
+        executeOnDelegate: true
+        timeoutMillis: 600000
+      templateUri: App/Harness SE/runParallelPipelines2:latest
+      templateVariables:
+      - name: environment_list
+        value: ${workflow.variables.env_list}
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
