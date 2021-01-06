@@ -6,8 +6,8 @@ scriptString: "export HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNESS_
   sc-client001,sc-client002,sc-client003\"\n#export HARNESS_ENVIRONMENT_LIST=\"sc-client001\"\
   \n\n# CSV name:value (use to set infrastructure definition names)\nexport HARNESS_VARIABLE_INPUTS='if-payment:infra-default,if-shipping:infra-default'\n\
   \n# CSV serviceName:ArtifactSourceName:buildNumber\nexport HARNESS_SERVICE_INPUTS='Payment:robotshop_payment:0.5.2,Shipping:robotshop_shipping:0.5.2'\n\
-  \n\n\n\n\n# Run Python script to launch and monitor pipelines to completion\npython3\
-  \ -u  << 'EOF'\n\nimport requests\nimport json\nimport os\nimport sys\nimport time\n\
+  \n\n# Run Python script to launch and monitor pipelines to completion\npython3 -u\
+  \  << 'EOF'\n\nimport requests\nimport json\nimport os\nimport sys\nimport time\n\
   import datetime\n\nACCOUNT_ID = os.environ.get('HARNESS_ACCOUNT_ID')\nAPI_KEY =\
   \ os.environ.get('HARNESS_API_KEY')\nAPPLICATION_NAME = os.environ.get('HARNESS_APPLICATION_NAME')\n\
   PIPELINE_NAME = os.environ.get('HARNESS_PIPELINE_NAME')\nSERVICE_INPUTS = os.environ.get('HARNESS_SERVICE_INPUTS')\n\
@@ -76,24 +76,3 @@ scriptString: "export HARNESS_ACCOUNT_ID=SAsyUUHTTImuYSZ35HPDvw\nexport HARNESS_
   exit $?"
 scriptType: BASH
 timeoutMillis: 600000
-variables:
-- description: CSV list of environments to deploy to
-  name: environment_list
-  value: ${workflow.variables.env_list}
-- description: CSV of vairable inputs with format "name:value". Use this to define infra def names, for example
-  name: variable_inputs
-  value: ${workflow.variables.var_inputs}
-- description: Name of Pipeline that will be launched for each environment
-  name: pipeline_name
-  value: ${workflow.variables.pipe_name}
-- description: Leave as Default
-  name: application_name
-  value: ${app.name}
-- description: CSV list of services with format "Name:Path:BuildNo"
-  name: service_inputs
-  value: ${workflow.variables.svc_inputs}
-- description: Leave as Default
-  name: account_id
-  value: ${env.accountId}
-- name: api_key
-  value: ${secrets.getValue("oli-graphql-api-key")}
