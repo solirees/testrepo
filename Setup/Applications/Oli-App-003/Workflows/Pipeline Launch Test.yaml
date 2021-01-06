@@ -141,6 +141,7 @@ phases:
         value: ${workflow.variables.env_list}
       - name: service_inputs
         value: Payment:robotshop_payment:${workflow.variables.payment_version},Shipping:robotshop_shipping:${workflow.variables.shipping_version}
+      - name: variable_inputs
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
