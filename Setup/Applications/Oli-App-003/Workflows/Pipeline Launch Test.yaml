@@ -33,6 +33,7 @@ phases:
       templateUri: App/Harness SE/runParallelPipelines:latest
       templateVariables:
       - name: env_list
+        value: ${workflow.variables.env_list}
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
