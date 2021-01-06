@@ -79,7 +79,7 @@ timeoutMillis: 600000
 variables:
 - name: environment_list
   value: ${workflow.variables.env_list}
-- description: CSV with format for each service of "serviceName:ArtifactSourceName:buildNumber"
+- description: CSV with format for each service of "svcName:artifactSrcName:buildNo"
   name: service_inputs
 - description: CSV with format "variableName:Value" for workflow variables (e.g. to map to infra definitions)
   name: variable_inputs
