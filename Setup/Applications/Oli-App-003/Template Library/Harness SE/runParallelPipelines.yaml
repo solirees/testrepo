@@ -23,10 +23,10 @@ scriptString: "export HARNESS_ACCOUNT_ID=\"${account_id}\"\nexport HARNESS_API_K
   \ \"%s\") {\n            id\n      }\n    }\n    ''' % (plName, appId)\n\n    print\
   \ (\"Getting Harness Pipeline ID\")\n    print (pload)\n\n    response = requests.post(URL,\
   \ headers={'x-api-key': API_KEY}, data=pload)\n    json_response = response.json()\n\
-  \    pl_id = json_response['data']['pipelineByName']['id']\n    print (\"Pipeline\
-  \ ID is:\" + pl_id)\n    return(pl_id)\n\ndef launchPipeline(appId, pipelineId,\
-  \ envRef, svcListRef, varListRef):\n\n    # Build list of strings for serviceInputs\n\
-  \    svcStrList = []\n    for svcRef in svcListRef:\n      svcStrList.append('{\
+  \    print (json_response)\n\n    pl_id = json_response['data']['pipelineByName']['id']\n\
+  \    print (\"Pipeline ID is:\" + pl_id)\n    return(pl_id)\n\ndef launchPipeline(appId,\
+  \ pipelineId, envRef, svcListRef, varListRef):\n\n    # Build list of strings for\
+  \ serviceInputs\n    svcStrList = []\n    for svcRef in svcListRef:\n      svcStrList.append('{\
   \ name: \"%s\", artifactValueInput: { valueType: BUILD_NUMBER buildNumber: { buildNumber:\
   \ \"%s\" artifactSourceName: \"%s\" } } }' % (svcRef['svc_name'], svcRef['build_no'],\
   \ svcRef['artifact_name']))\n\n    # Build list of strings for variableInputs\n\
