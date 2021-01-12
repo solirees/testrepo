@@ -17,13 +17,13 @@ scriptString: "export HARNESS_ACCOUNT_ID=\"${account_id}\"\nexport HARNESS_API_K
   \ \"%s\") { \n          id\n        }\n      } \n    ''' % (appName)\n\n    print\
   \ (\"Getting Harness App ID\")\n    print (pload)\n\n    response = requests.post(URL,\
   \ headers={'x-api-key': API_KEY}, data=pload)\n\n    json_response = response.json()\n\
-  \    appId = json_response['data']['applicationByName']['id']\n    print (\"Application\
-  \ ID is:\" + appId)\n\n    return(appId)\n\ndef getPipelineByName(appId, plName):\n\
-  \    pload = '''\n      {\n        pipelineByName( pipelineName: \"%s\", applicationId:\
-  \ \"%s\") {\n            id\n      }\n    }\n    ''' % (plName, appId)\n\n    print\
-  \ (\"Getting Harness Pipeline ID\")\n    print (pload)\n\n    response = requests.post(URL,\
-  \ headers={'x-api-key': API_KEY}, data=pload)\n    json_response = response.json()\n\
-  \    print (json_response)\n\n    pl_id = json_response['data']['pipelineByName']['id']\n\
+  \    print (json_response)\n\n    appId = json_response['data']['applicationByName']['id']\n\
+  \    print (\"Application ID is:\" + appId)\n\n    return(appId)\n\ndef getPipelineByName(appId,\
+  \ plName):\n    pload = '''\n      {\n        pipelineByName( pipelineName: \"%s\"\
+  , applicationId: \"%s\") {\n            id\n      }\n    }\n    ''' % (plName, appId)\n\
+  \n    print (\"Getting Harness Pipeline ID\")\n    print (pload)\n\n    response\
+  \ = requests.post(URL, headers={'x-api-key': API_KEY}, data=pload)\n    json_response\
+  \ = response.json()\n    print (json_response)\n\n    pl_id = json_response['data']['pipelineByName']['id']\n\
   \    print (\"Pipeline ID is:\" + pl_id)\n    return(pl_id)\n\ndef launchPipeline(appId,\
   \ pipelineId, envRef, svcListRef, varListRef):\n\n    # Build list of strings for\
   \ serviceInputs\n    svcStrList = []\n    for svcRef in svcListRef:\n      svcStrList.append('{\
