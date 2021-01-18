@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Parallel Canary
+  stageName: STAGE 1
   workflowName: Oli K8s Canary
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
@@ -25,7 +25,7 @@ pipelineStages:
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: Parallel Canary
+  stageName: STAGE 1
   workflowName: Oli K8s Canary
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
@@ -39,3 +39,10 @@ pipelineStages:
   - entityType: SERVICE
     name: Service
     value: Shipping
+- type: ENV_STATE
+  name: Canary Approval
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Canary Approval
