@@ -10,7 +10,7 @@ pipelineStages:
   workflowName: Canary Approval
 - type: ENV_STATE
   name: Payment
-  parallel: false
+  parallel: true
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 1
