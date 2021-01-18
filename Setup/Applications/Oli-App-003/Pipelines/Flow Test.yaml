@@ -2,6 +2,13 @@ harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
 - type: ENV_STATE
+  name: Canary Approval
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Canary Approval
+- type: ENV_STATE
   name: Payment
   parallel: false
   skipCondition:
@@ -39,10 +46,3 @@ pipelineStages:
   - entityType: SERVICE
     name: Service
     value: Shipping
-- type: ENV_STATE
-  name: Canary Approval
-  parallel: true
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: STAGE 1
-  workflowName: Canary Approval
