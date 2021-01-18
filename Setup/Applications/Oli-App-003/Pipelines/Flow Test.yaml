@@ -1,2 +1,19 @@
 harnessApiVersion: '1.0'
 type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Oli K8s Canary
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Oli K8s Canary
+  workflowVariables:
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_Kubernetes
+    value: oli-minikube-local-infra
+  - name: ReplicaCount
+    value: '2'
+  - entityType: SERVICE
+    name: Service
+    value: Shipping
