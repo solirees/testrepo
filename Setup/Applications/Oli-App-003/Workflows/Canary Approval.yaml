@@ -28,7 +28,7 @@ phases:
         userGroups:
         - PFIVcv84TVW6OEpQEDvmGw
     - type: BARRIER
-      name: Approval
+      name: Approval Complete
       properties:
         identifier: APPROVAL
         templateUuid: null
