@@ -39,10 +39,3 @@ pipelineStages:
   - entityType: SERVICE
     name: Service
     value: Shipping
-- type: ENV_STATE
-  name: Canary Approval
-  parallel: true
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: Parallel Canary
-  workflowName: Canary Approval
