@@ -36,6 +36,11 @@ phases:
         templateVersion: null
         timeoutMillis: 86400000
         userGroups: null
+    - type: BARRIER
+      name: Canary Verified
+      properties:
+        identifier: CANARY_OK
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
