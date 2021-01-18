@@ -20,3 +20,22 @@ pipelineStages:
   - entityType: SERVICE
     name: Service
     value: Shipping
+- type: ENV_STATE
+  name: Oli K8s Canary-1
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Oli K8s Canary
+  workflowVariables:
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_Kubernetes
+    value: infra-default
+  - name: ReplicaCount
+    value: '2'
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: sc-client002
+  - entityType: SERVICE
+    name: Service
+    value: Shipping
