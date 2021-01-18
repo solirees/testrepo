@@ -32,6 +32,11 @@ phases:
       properties:
         identifier: CANARY_OK
         timeoutMillis: 60000
+    - type: BARRIER
+      name: Barrier_2
+      properties:
+        identifier: APPROVAL
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
