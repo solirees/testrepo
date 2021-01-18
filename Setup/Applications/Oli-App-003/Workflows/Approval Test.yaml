@@ -30,9 +30,12 @@ phases:
     name: Verify
     steps:
     - type: BARRIER
-      name: Canary Completed
+      name: Waiting on Canary
       properties:
         identifier: CANARY_OK
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     - type: BARRIER
       name: Approval Completed
