@@ -28,6 +28,12 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
+    steps:
+    - type: BARRIER
+      name: Canary Completed
+      properties:
+        identifier: CANARY_OK
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
