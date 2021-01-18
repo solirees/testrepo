@@ -11,9 +11,12 @@ pipelineStages:
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_Kubernetes
-    value: oli-minikube-local-infra
+    value: infra-default
   - name: ReplicaCount
     value: '2'
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: sc-client001
   - entityType: SERVICE
     name: Service
     value: Shipping
