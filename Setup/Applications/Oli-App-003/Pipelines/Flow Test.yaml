@@ -3,7 +3,7 @@ type: PIPELINE
 pipelineStages:
 - type: ENV_STATE
   name: Canary Approval
-  parallel: true
+  parallel: false
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 1
