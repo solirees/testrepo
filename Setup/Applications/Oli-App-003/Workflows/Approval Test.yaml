@@ -37,11 +37,6 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 60000
-    - type: BARRIER
-      name: Approval Completed
-      properties:
-        identifier: APPROVAL
-        timeoutMillis: 60000
     - type: APPROVAL
       name: Approval
       properties:
@@ -49,6 +44,11 @@ phases:
         timeoutMillis: 86400000
         userGroups:
         - PFIVcv84TVW6OEpQEDvmGw
+    - type: BARRIER
+      name: Approval Completed
+      properties:
+        identifier: APPROVAL
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
