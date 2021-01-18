@@ -28,9 +28,12 @@ phases:
         userGroups:
         - PFIVcv84TVW6OEpQEDvmGw
     - type: BARRIER
-      name: Barrier_2
+      name: Approval
       properties:
         identifier: APPROVAL
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
