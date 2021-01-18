@@ -21,7 +21,7 @@ pipelineStages:
     name: Service
     value: Payment
 - type: ENV_STATE
-  name: Payment
+  name: Shipping
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
@@ -38,7 +38,7 @@ pipelineStages:
     value: sc-client002
   - entityType: SERVICE
     name: Service
-    value: Payment
+    value: Shipping
 - type: ENV_STATE
   name: Canary Approval
   parallel: true
