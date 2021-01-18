@@ -27,6 +27,11 @@ phases:
         timeoutMillis: 86400000
         userGroups:
         - PFIVcv84TVW6OEpQEDvmGw
+    - type: BARRIER
+      name: Barrier_2
+      properties:
+        identifier: APPROVAL
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
