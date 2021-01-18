@@ -33,9 +33,12 @@ phases:
         identifier: CANARY_OK
         timeoutMillis: 60000
     - type: BARRIER
-      name: Barrier_2
+      name: Approval
       properties:
         identifier: APPROVAL
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
