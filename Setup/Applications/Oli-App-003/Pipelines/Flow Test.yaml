@@ -2,7 +2,7 @@ harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
 - type: ENV_STATE
-  name: Shipping
+  name: Payment1
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
@@ -19,7 +19,7 @@ pipelineStages:
     value: sc-client001
   - entityType: SERVICE
     name: Service
-    value: Shipping
+    value: Payment
 - type: ENV_STATE
   name: Payment
   parallel: true
