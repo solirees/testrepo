@@ -2,11 +2,11 @@ harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
 - type: ENV_STATE
-  name: Oli K8s Canary
+  name: Shipping
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 1
+  stageName: Parallel Canary
   workflowName: Oli K8s Canary
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
@@ -25,7 +25,7 @@ pipelineStages:
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 1
+  stageName: Parallel Canary
   workflowName: Oli K8s Canary
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
@@ -44,5 +44,5 @@ pipelineStages:
   parallel: true
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 1
+  stageName: Parallel Canary
   workflowName: Canary Approval
