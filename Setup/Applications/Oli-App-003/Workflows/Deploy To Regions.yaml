@@ -46,6 +46,23 @@ phases:
         value: SAsyUUHTTImuYSZ35HPDvw
       - name: api_key
         value: ${secrets.getValue("oli-graphql-api-key")}
+    - type: SHELL_SCRIPT
+      name: runParallelPipelines_1
+      properties:
+        executeOnDelegate: true
+        timeoutMillis: 600000
+      templateUri: App/Harness SE/runParallelPipelines:latest
+      templateVariables:
+      - name: environment_list
+        value: ${workflow.variables.env_list}
+      - name: service_inputs
+      - name: variable_inputs
+      - name: application_name
+      - name: pipeline_name
+      - name: account_id
+        value: SAsyUUHTTImuYSZ35HPDvw
+      - name: api_key
+        value: ${secrets.getValue("oli-graphql-api-key")}
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
