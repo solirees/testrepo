@@ -24,7 +24,7 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: "Sleep 1\nexit 0 "
+        scriptString: "Sleep 60\nexit 0 "
         scriptType: BASH
         sshKeyRef: null
         sweepingOutputName: null
