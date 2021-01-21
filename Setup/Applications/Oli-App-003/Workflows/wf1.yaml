@@ -20,6 +20,8 @@ phases:
       properties:
         commandPath: null
         connectionAttributes: null
+        delegateSelectors:
+        - oli-mk-delegate-sasyuu-0
         executeOnDelegate: true
         host: null
         outputVars: ''
@@ -30,7 +32,9 @@ phases:
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
