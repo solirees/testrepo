@@ -8,3 +8,10 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 1
   workflowName: wf1
+- type: ENV_STATE
+  name: wf2
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: wf2
