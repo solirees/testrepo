@@ -35,7 +35,7 @@ phases:
       - name: environment_list
         value: ${workflow.variables.env_list}
       - name: service_inputs
-        value: Payment:robotshop_payment:${workflow.variables.payment_version},Shipping:robotshop_shipping:${workflow.variables.shipping_version}
+        value: Payment:robotshop_rs-payment:${workflow.variables.payment_version},Shipping:robotshop_rs-shipping:${workflow.variables.shipping_version}
       - name: variable_inputs
         value: if-payment:infra-default,if-shipping:infra-default
       - name: application_name
