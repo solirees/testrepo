@@ -39,6 +39,14 @@ phases:
   serviceName: Shipping
   statefulSet: false
   templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
   - expression: ${InfraDefinition_KUBERNETES}
     fieldName: infraDefinitionId
     metadata:
@@ -69,6 +77,14 @@ rollbackPhases:
   serviceName: Shipping
   statefulSet: false
   templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
   - expression: ${InfraDefinition_KUBERNETES}
     fieldName: infraDefinitionId
     metadata:
@@ -89,6 +105,14 @@ templateExpressions:
   - name: relatedField
   - name: entityType
     value: INFRASTRUCTURE_DEFINITION
+- expression: ${Service}
+  fieldName: serviceId
+  metadata:
+  - name: relatedField
+  - name: artifactType
+    value: DOCKER
+  - name: entityType
+    value: SERVICE
 templatized: true
 userVariables:
 - type: ENTITY
@@ -96,6 +120,11 @@ userVariables:
   fixed: false
   mandatory: true
   name: Environment
+- type: ENTITY
+  description: Variable for Service entity in Rollback Rolling
+  fixed: false
+  mandatory: true
+  name: Service
 - type: ENTITY
   description: Variable for Infrastructure Definition entity in Rollback Rolling
   fixed: false
