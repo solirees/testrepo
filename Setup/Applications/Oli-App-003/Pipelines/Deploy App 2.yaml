@@ -7,11 +7,14 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: Update Services
-  workflowName: Deploy Payment
+  workflowName: Deploy Svc
   workflowVariables:
   - entityType: ENVIRONMENT
     name: Environment
     value: ${env}
+  - entityType: SERVICE
+    name: Service
+    value: Payment
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: ${if-payment}
