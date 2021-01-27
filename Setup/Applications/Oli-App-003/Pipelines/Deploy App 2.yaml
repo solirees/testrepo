@@ -24,11 +24,14 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: Update Services
-  workflowName: Deploy Shipping
+  workflowName: Deploy Svc
   workflowVariables:
   - entityType: ENVIRONMENT
     name: Environment
     value: ${env}
+  - entityType: SERVICE
+    name: Service
+    value: Shipping
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: ${if-shipping}
