@@ -1,0 +1,31 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Deploy Payments
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Update Services
+  workflowName: Deploy Payment
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: ${env}
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: ${if-payment}
+- type: ENV_STATE
+  name: Deploy Shipping
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: Update Services
+  workflowName: Deploy Shipping
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: ${env}
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: ${if-shipping}
