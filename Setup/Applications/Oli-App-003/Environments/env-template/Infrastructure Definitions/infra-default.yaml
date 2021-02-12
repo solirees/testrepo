@@ -5,5 +5,5 @@ deploymentType: KUBERNETES
 infrastructure:
 - type: DIRECT_KUBERNETES
   cloudProviderName: oli-minikube-local
-  namespace: ns001
+  namespace: template-ns
   releaseName: release-${infra.kubernetes.infraId}
