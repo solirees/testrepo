@@ -46,19 +46,13 @@ phases:
   - type: K8S_PHASE_STEP
     name: Verify
     steps:
-    - type: BARRIER
-      name: Canary Verified
-      properties:
-        identifier: CANARY_OK
-        timeoutMillis: 60000
-    - type: BARRIER
+    - type: APPROVAL
       name: Approval
       properties:
-        identifier: APPROVAL
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
+        approvalStateType: USER_GROUP
+        timeoutMillis: 86400000
+        userGroups:
+        - PFIVcv84TVW6OEpQEDvmGw
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up

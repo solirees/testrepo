@@ -1,0 +1,163 @@
+harnessApiVersion: '1.0'
+type: MULTI_SERVICE
+concurrencyStrategy: INFRA
+envName: template-env
+failureStrategies:
+- executionScope: WORKFLOW
+  failureTypes:
+  - APPLICATION_ERROR
+  repairActionCode: ROLLBACK_WORKFLOW
+  retryCount: 0
+notificationRules:
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupIds:
+  - PFIVcv84TVW6OEpQEDvmGw
+phases:
+- type: KUBERNETES
+  computeProviderName: oli-minikube-local
+  daemonSet: false
+  infraDefinitionName: if-payment
+  name: Metadata for Payment Svc
+  phaseSteps:
+  - type: K8S_PHASE_STEP
+    name: Deploy
+    steps:
+    - type: SHELL_SCRIPT
+      name: Collect Metadata
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        delegateSelectors:
+        - oli-mk-delegate-sasyuu-0
+        executeOnDelegate: true
+        host: null
+        publishAsVar: true
+        sshKeyRef: null
+        sweepingOutputName: svcPayment
+        sweepingOutputScope: WORKFLOW
+        templateExpressions: null
+        timeoutMillis: 600000
+      templateUri: App/Harness SE/Collect Metadata:latest
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Verify
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: Payment
+  statefulSet: false
+- type: KUBERNETES
+  computeProviderName: oli-minikube-local
+  daemonSet: false
+  infraDefinitionName: if-shipping
+  name: Metadata for Shipping Svc
+  phaseSteps:
+  - type: K8S_PHASE_STEP
+    name: Deploy
+    steps:
+    - type: SHELL_SCRIPT
+      name: Collect Metadata
+      properties:
+        commandPath: null
+        connectionAttributes: null
+        delegateSelectors:
+        - oli-mk-delegate-sasyuu-0
+        executeOnDelegate: true
+        host: null
+        publishAsVar: true
+        sshKeyRef: null
+        sweepingOutputName: svcShipping
+        sweepingOutputScope: WORKFLOW
+        templateExpressions: null
+        timeoutMillis: 600000
+      templateUri: App/Harness SE/Collect Metadata:latest
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Verify
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: Shipping
+  statefulSet: false
+postDeploymentSteps:
+- type: SHELL_SCRIPT
+  name: runParallelPipelines
+  properties:
+    commandPath: null
+    connectionAttributes: null
+    delegateSelectors:
+    - oli-mk-delegate-sasyuu-0
+    executeOnDelegate: true
+    host: null
+    publishAsVar: false
+    sshKeyRef: null
+    sweepingOutputName: null
+    sweepingOutputScope: null
+    templateExpressions: null
+    timeoutMillis: 600000
+  templateUri: App/Harness SE/runParallelPipelines:latest
+  templateVariables:
+  - name: environment_list
+    value: ${workflow.variables.env_list}
+  - name: service_inputs
+    value: ${svcPayment.inputs},${svcShipping.inputs}
+  - name: variable_inputs
+    value: infra-payment:${svcPayment.infraName},infra-shipping:${svcShipping.infraName}
+  - name: pipeline_name
+    value: Deploy App
+  - name: api_key
+    value: ${secrets.getValue("oli-graphql-api-key")}
+rollbackPhases:
+- type: KUBERNETES
+  computeProviderName: oli-minikube-local
+  daemonSet: false
+  infraDefinitionName: if-payment
+  name: Rollback Metadata for Payment Svc
+  phaseNameForRollback: Metadata for Payment Svc
+  phaseSteps:
+  - type: K8S_PHASE_STEP
+    name: Deploy
+    phaseStepNameForRollback: Deploy
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Wrap Up
+    phaseStepNameForRollback: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: Payment
+  statefulSet: false
+- type: KUBERNETES
+  computeProviderName: oli-minikube-local
+  daemonSet: false
+  infraDefinitionName: if-shipping
+  name: Rollback Metadata for Shipping Svc
+  phaseNameForRollback: Metadata for Shipping Svc
+  phaseSteps:
+  - type: K8S_PHASE_STEP
+    name: Deploy
+    phaseStepNameForRollback: Deploy
+    statusForRollback: SUCCESS
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Wrap Up
+    phaseStepNameForRollback: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: Shipping
+  statefulSet: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: env_list
+  value: client001,client002,client003

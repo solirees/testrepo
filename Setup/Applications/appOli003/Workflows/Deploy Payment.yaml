@@ -36,7 +36,7 @@ phases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Payments
+  serviceName: Payment
   statefulSet: false
   templateExpressions:
   - expression: ${InfraDefinition_KUBERNETES}
@@ -66,7 +66,7 @@ rollbackPhases:
     phaseStepNameForRollback: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Payments
+  serviceName: Payment
   statefulSet: false
   templateExpressions:
   - expression: ${InfraDefinition_KUBERNETES}

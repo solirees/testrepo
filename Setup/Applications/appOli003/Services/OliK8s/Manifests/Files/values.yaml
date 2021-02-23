@@ -1,4 +1,4 @@
-name: payment
+name: harness-example
 replicas: 1
 
 image: ${artifact.metadata.image}
@@ -23,7 +23,6 @@ serviceTargetPort: 80
 # Both are added to the container environment in podSpec as envFrom source.
 env:
   config:
-    olivar01: 12345678890
-    olivar02: abcdefghijk
+    key1: value1
   secrets:
-    olisec01: test123
+    key2: value2

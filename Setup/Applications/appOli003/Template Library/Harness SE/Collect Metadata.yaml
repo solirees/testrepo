@@ -1,0 +1,12 @@
+harnessApiVersion: '1.0'
+type: SHELL_SCRIPT
+outputVars: serviceName,infraName,buildNo,serviceId,inputs
+scriptString: "echo \"test\"\n\n# Service Variables \nexport serviceName=${service.name}\n\
+  \n# Infra Variables\nexport infraName=${infra.name}\n\n# Artifact Variables\nexport\
+  \ buildNo=${artifact.buildNo}\n\n# We only expect one service id in ${artifact.serviceIds}\n\
+  # Example format: [pJ9MbG6hTRSacpnQy20Duw]\n# Need to remove the square brackets\n\
+  export serviceId=`echo ${artifact.serviceIds} | awk '{ gsub(/\\[/,\"\"); gsub(/]/,\
+  \ \"\"); print $1 }'`\n\n# Set up service inputs format (for use in runParallelPipelines\
+  \ stage)\nexport inputs=\"${serviceId}:${buildNo}\""
+scriptType: BASH
+timeoutMillis: 600000

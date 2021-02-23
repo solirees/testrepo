@@ -17,14 +17,10 @@ pipelineStages:
     userGroups:
     - Account Administrator
     workflowVariables: null
-    pipelineStageElementId: HpZNLBwvR7e9EY8O6H_ZFw
     stageName: STAGE 2
-    disable: false
     timeoutMillis: 86400000
-    pipelineStageParallelIndex: 2
     approvalStateType: USER_GROUP
     sweepingOutputName: ''
-    pipelineId: 7s5vGhu6Soqm52tbSpYmDw
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2

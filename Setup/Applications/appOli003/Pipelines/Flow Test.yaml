@@ -11,12 +11,12 @@ pipelineStages:
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_Kubernetes
-    value: infra-default
+    value: if-payment
   - name: ReplicaCount
     value: '2'
   - entityType: ENVIRONMENT
     name: Environment
-    value: sc-client001
+    value: client001
   - entityType: SERVICE
     name: Service
     value: Payment
@@ -30,12 +30,12 @@ pipelineStages:
   workflowVariables:
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_Kubernetes
-    value: infra-default
+    value: if-payment
   - name: ReplicaCount
     value: '2'
   - entityType: ENVIRONMENT
     name: Environment
-    value: sc-client002
+    value: client002
   - entityType: SERVICE
     name: Service
     value: Shipping
